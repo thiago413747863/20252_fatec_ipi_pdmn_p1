@@ -25,7 +25,7 @@ class App extends React.Component {
     return (
       <main className="container my-5">
         <div className="row">
-          <LembreteLista /> 
+          <LembreteLista lembretes={this.state.lembretes}/> 
         </div>
         <div className="row">
           <LembreteEntrada criarLembrete={this.criarLembrete} />
