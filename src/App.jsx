@@ -1,5 +1,6 @@
 import React from "react";
 import LembreteEntrada from "./LembreteEntrada";
+import LembreteLista from "./LembreteLista";
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +24,9 @@ class App extends React.Component {
   render() {
     return (
       <main className="container my-5">
+        <div className="row">
+          <LembreteLista /> 
+        </div>
         <div className="row">
           <LembreteEntrada criarLembrete={this.criarLembrete} />
         </div>
