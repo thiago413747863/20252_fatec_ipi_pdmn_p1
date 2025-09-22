@@ -19,7 +19,7 @@ const LembreteLista = props => {
   }
 
   return (
-    <ul className="px-3 rounded-2" style={{ backgroundColor: '#f8fafc' }}>
+    <ul className="p-3 m-0 rounded-2" style={{ backgroundColor: '#f8fafc' }}>
       {props.lembretes.length > 0 ? (
         props.lembretes.map(lembrete => (
           <li
@@ -27,7 +27,7 @@ const LembreteLista = props => {
             style={{ backgroundColor: '#ffffff' }}
           >
             <div className="text-center flex-grow-1">{lembrete.titulo}</div>
-            <div>
+            <div className="d-flex">
               <button
                 className={`btn ${
                   lembrete.ehFavorito ? 'btn-warning' : 'btn-secondary'
@@ -53,7 +53,7 @@ const LembreteLista = props => {
         ))
       ) : (
         <p
-          className="text-center py-4 my-3 m-0"
+          className="text-center py-4 m-0"
           style={{ backgroundColor: '#ffffff' }}
         >
           Sem lembretes! Adicione um novo lembrete

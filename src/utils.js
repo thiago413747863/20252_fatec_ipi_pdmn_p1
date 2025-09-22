@@ -33,3 +33,15 @@ export const favoritarLembrete = (lembretes, lembreteEscolhido) => {
 
   return lembretesAtualizados;
 };
+
+export const filtrarFavoritos = lembretes => {
+  const lembretesFiltrados = [];
+
+  for (let i = 0; i < lembretes.length; i++) {
+    if (!lembretes[i].ehFavorito) continue;
+
+    adicionarItem(lembretesFiltrados, lembretes[i]);
+  }
+
+  return lembretesFiltrados;
+};

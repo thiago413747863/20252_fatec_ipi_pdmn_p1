@@ -1,6 +1,7 @@
 import React from 'react';
 import LembreteEntrada from './LembreteEntrada';
 import LembreteLista from './LembreteLista';
+import { filtrarFavoritos } from './utils';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,24 +17,43 @@ class App extends React.Component {
     });
   };
 
+  aoAlternarFIltro = () => {
+    this.setState({
+      lembretes: this.state.lembretes,
+      filtrarPorFavoritos: !this.state.filtrarPorFavoritos,
+    });
+  };
+
+  aplicarFiltrosAtivos = () => {
+    if (this.state.filtrarPorFavoritos)
+      return filtrarFavoritos(this.state.lembretes);
+
+    return this.state.lembretes;
+  };
+
   render() {
     return (
       <main
         className="container my-5 p-3 p-lg-5 rounded-2"
         style={{ backgroundColor: '#ffffff' }}
       >
-        <div className="row mb-4">
-          <LembreteEntrada
-            lembretes={this.state.lembretes}
-            atualizarLembretes={this.atualizarLembretes}
-          />
+        <LembreteEntrada
+          lembretes={this.state.lembretes}
+          atualizarLembretes={this.atualizarLembretes}
+        />
+        <div className="d-flex justify-content-end my-3">
+          <button
+            onClick={this.aoAlternarFIltro}
+            className="btn btn-dark px-4 py-2"
+            style={{ width: 200 }}
+          >
+            {this.state.filtrarPorFavoritos ? 'Ver Todos' : 'Apenas favoritos'}
+          </button>
         </div>
-        <div className="row m-0">
-          <LembreteLista
-            lembretes={this.state.lembretes}
-            atualizarLembretes={this.atualizarLembretes}
-          />
-        </div>
+        <LembreteLista
+          lembretes={this.aplicarFiltrosAtivos()}
+          atualizarLembretes={this.atualizarLembretes}
+        />
       </main>
     );
   }
