@@ -1,6 +1,6 @@
-import React from "react";
-import LembreteEntrada from "./LembreteEntrada";
-import LembreteLista from "./LembreteLista";
+import React from 'react';
+import LembreteEntrada from './LembreteEntrada';
+import LembreteLista from './LembreteLista';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,12 +9,7 @@ class App extends React.Component {
 
   state = { lembretes: [], filtrarPorFavoritos: false };
 
-  criarLembrete = (titulo) => {
-    const novoLembrete = { titulo, ehFavorito: false };
-    this.atualizarLembretes([...this.state.lembretes, novoLembrete]);
-  };
-
-  atualizarLembretes = (lembretesAtualizados) => {
+  atualizarLembretes = lembretesAtualizados => {
     this.setState({
       lembretes: lembretesAtualizados,
       filtrarPorFavoritos: this.state.filtrarPorFavoritos,
@@ -23,12 +18,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <main className="container my-5">
-        <div className="row">
-          <LembreteLista lembretes={this.state.lembretes}/> 
+      <main
+        className="container my-5 p-3 p-md-5 rounded-2"
+        style={{ backgroundColor: '#ffffff' }}
+      >
+        <div className="row mb-4">
+          <LembreteEntrada
+            lembretes={this.state.lembretes}
+            atualizarLembretes={this.atualizarLembretes}
+          />
         </div>
-        <div className="row">
-          <LembreteEntrada criarLembrete={this.criarLembrete} />
+        <div className="row m-0">
+          <LembreteLista
+            lembretes={this.state.lembretes}
+            atualizarLembretes={this.atualizarLembretes}
+          />
         </div>
       </main>
     );
