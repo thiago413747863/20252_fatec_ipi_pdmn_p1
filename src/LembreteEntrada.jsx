@@ -24,7 +24,7 @@ class LembreteEntrada extends React.Component {
     return (
       <form
         onSubmit={this.aoCriarLembrete}
-        className="d-flex justify-content-between mt-4 pb-4"
+        className="d-flex justify-content-between mt-2 mt-lg-4"
       >
         <input
           type="text"

@@ -20,3 +20,16 @@ export const removerLembrete = (lembretes, lembreteEscolhido) => {
 
   return lembretesAtualizados;
 };
+
+export const favoritarLembrete = (lembretes, lembreteEscolhido) => {
+  const lembretesAtualizados = lembretes.map(lembrete => {
+    if (lembrete !== lembreteEscolhido) return lembrete;
+
+    return {
+      titulo: lembrete.titulo,
+      ehFavorito: !lembreteEscolhido.ehFavorito,
+    };
+  });
+
+  return lembretesAtualizados;
+};

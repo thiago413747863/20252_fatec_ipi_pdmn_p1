@@ -1,4 +1,4 @@
-import { removerLembrete } from './utils';
+import { favoritarLembrete, removerLembrete } from './utils';
 
 const LembreteLista = props => {
   function aoRemover(lembreteEscolhido) {
@@ -10,8 +10,16 @@ const LembreteLista = props => {
     props.atualizarLembretes(lembretesAtualizados);
   }
 
+  function aoFavoritar(lembreteEscolhido) {
+    const lembretesAtualizados = favoritarLembrete(
+      props.lembretes,
+      lembreteEscolhido
+    );
+    props.atualizarLembretes(lembretesAtualizados);
+  }
+
   return (
-    <ul className="p-3 rounded-2" style={{ backgroundColor: '#f8fafc' }}>
+    <ul className="px-3 rounded-2" style={{ backgroundColor: '#f8fafc' }}>
       {props.lembretes.length > 0 ? (
         props.lembretes.map(lembrete => (
           <li
@@ -20,6 +28,19 @@ const LembreteLista = props => {
           >
             <div className="text-center flex-grow-1">{lembrete.titulo}</div>
             <div>
+              <button
+                className={`btn ${
+                  lembrete.ehFavorito ? 'btn-warning' : 'btn-secondary'
+                }`}
+                onClick={() => aoFavoritar(lembrete)}
+                aria-label={!lembrete.ehFavorito ? 'Favoritar' : 'Desfavoritar'}
+              >
+                {!lembrete.ehFavorito ? (
+                  <i className="fa-regular fa-star"></i>
+                ) : (
+                  <i className="fa-solid fa-star"></i>
+                )}
+              </button>
               <button
                 className="btn btn-danger ms-2"
                 onClick={() => aoRemover(lembrete)}
@@ -32,7 +53,7 @@ const LembreteLista = props => {
         ))
       ) : (
         <p
-          className="text-center py-4 m-0"
+          className="text-center py-4 my-3 m-0"
           style={{ backgroundColor: '#ffffff' }}
         >
           Sem lembretes! Adicione um novo lembrete

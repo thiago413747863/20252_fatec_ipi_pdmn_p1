@@ -19,7 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <main
-        className="container my-5 p-3 p-md-5 rounded-2"
+        className="container my-5 p-3 p-lg-5 rounded-2"
         style={{ backgroundColor: '#ffffff' }}
       >
         <div className="row mb-4">
