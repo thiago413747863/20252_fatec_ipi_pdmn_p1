@@ -1,10 +1,9 @@
-import { favoritarLembrete, removerLembrete } from './utils';
+import { favoritarLembrete } from './utils';
 
 const LembreteLista = props => {
   function aoRemover(lembreteEscolhido) {
-    const lembretesAtualizados = removerLembrete(
-      props.lembretes,
-      lembreteEscolhido
+    const lembretesAtualizados = props.lembretes.filter(
+      lembrete => lembrete !== lembreteEscolhido
     );
 
     props.atualizarLembretes(lembretesAtualizados);
@@ -19,7 +18,7 @@ const LembreteLista = props => {
   }
 
   return (
-    <ul className="p-3 m-0 rounded-2" style={{ backgroundColor: '#f8fafc' }}>
+    <ul className="p-3 m-0 rounded-2" style={{ backgroundColor: '#f1f5f9' }}>
       {props.lembretes.length > 0 ? (
         props.lembretes.map(lembrete => (
           <li

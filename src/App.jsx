@@ -1,7 +1,6 @@
 import React from 'react';
 import LembreteEntrada from './LembreteEntrada';
 import LembreteLista from './LembreteLista';
-import { filtrarFavoritos } from './utils';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,7 +25,7 @@ class App extends React.Component {
 
   aplicarFiltrosAtivos = () => {
     if (this.state.filtrarPorFavoritos)
-      return filtrarFavoritos(this.state.lembretes);
+      return this.state.lembretes.filter(lembrete => lembrete.ehFavorito);
 
     return this.state.lembretes;
   };

@@ -1,24 +1,8 @@
-export const adicionarItem = (array, item) => {
-  array[array.length] = item;
-};
-
 export const copiarLembretes = lembretes => {
-  return lembretes.map(lembrete => ({
-    titulo: lembrete.titulo,
-    ehFavorito: lembrete.ehFavorito,
-  }));
-};
+  const copiaLembretes = [];
+  for (let i = 0; i < lembretes.length; i++) copiaLembretes.push(lembretes[i]);
 
-export const removerLembrete = (lembretes, lembreteEscolhido) => {
-  const lembretesAtualizados = [];
-
-  for (let i = 0; i < lembretes.length; i++) {
-    if (lembretes[i] === lembreteEscolhido) continue;
-
-    adicionarItem(lembretesAtualizados, lembretes[i]);
-  }
-
-  return lembretesAtualizados;
+  return copiaLembretes;
 };
 
 export const favoritarLembrete = (lembretes, lembreteEscolhido) => {
@@ -30,6 +14,25 @@ export const favoritarLembrete = (lembretes, lembreteEscolhido) => {
       ehFavorito: !lembreteEscolhido.ehFavorito,
     };
   });
+
+  return lembretesAtualizados;
+};
+
+///////////////////////////////////////////////////////////////
+// IMPLEMENTAÇÕES ADICIONAIS
+
+export const adicionarItem = (array, item) => {
+  array[array.length] = item;
+};
+
+export const removerLembrete = (lembretes, lembreteEscolhido) => {
+  const lembretesAtualizados = [];
+
+  for (let i = 0; i < lembretes.length; i++) {
+    if (lembretes[i] === lembreteEscolhido) continue;
+
+    adicionarItem(lembretesAtualizados, lembretes[i]);
+  }
 
   return lembretesAtualizados;
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { adicionarItem, copiarLembretes } from './utils';
+import { copiarLembretes } from './utils';
 
 class LembreteEntrada extends React.Component {
   state = { textoDigitado: '' };
@@ -14,7 +14,7 @@ class LembreteEntrada extends React.Component {
     const novoLembrete = { titulo, ehFavorito: false };
 
     const copiaLembretes = copiarLembretes(this.props.lembretes);
-    adicionarItem(copiaLembretes, novoLembrete);
+    copiaLembretes.push(novoLembrete);
 
     this.setState({ textoDigitado: '' });
     this.props.atualizarLembretes(copiaLembretes);
