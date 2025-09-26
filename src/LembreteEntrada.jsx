@@ -8,8 +8,7 @@ class LembreteEntrada extends React.Component {
     this.setState({ textoDigitado: event.target.value });
   };
 
-  aoCriarLembrete = event => {
-    event.preventDefault();
+  aoCriarLembrete = () => {
     const titulo = this.state.textoDigitado;
     const novoLembrete = { titulo, ehFavorito: false };
 
@@ -22,10 +21,7 @@ class LembreteEntrada extends React.Component {
 
   render() {
     return (
-      <form
-        onSubmit={this.aoCriarLembrete}
-        className="d-flex justify-content-between mt-2"
-      >
+      <div className="d-flex justify-content-between mt-2">
         <input
           type="text"
           id="titulo"
@@ -42,7 +38,7 @@ class LembreteEntrada extends React.Component {
         >
           OK
         </button>
-      </form>
+      </div>
     );
   }
 }
